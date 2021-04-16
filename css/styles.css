@@ -13,7 +13,7 @@
   --icon-clients: #afb1b8;
   --logo-font-family: "Raleway", sans-serif;
   --text-general: "Roboto", sans-serif;
-  --animation: 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+  --animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 html {
   box-sizing: border-box;
@@ -440,26 +440,65 @@ button:focus {
 .footer .container {
   display: flex;
   justify-content: space-between;
-  margin-right: 120px;
-  margin-left: 120px;
 }
 .footer.social-connect {
   padding-top: 12px;
-  flex-basis: calc((50% - 45px) / 2);
 }
-.footer .information {
-  /* margin-right: 70px; */
-  flex-basis: calc((50% - 45px) / 2);
-}
-.subcribe {
-  width: 570px;
-  flex-basis: calc(50% - 45px);
-}
-.footer.social-connect,
-.footer.information {
-  /* flex-basis: calc((100% - 280px) / 4); */
+.footer form {
+  display: flex;
 }
 
+form .mail {
+  display: inline-block;
+  height: 50px;
+  width: 358px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  padding-left: 16px;
+}
+::-webkit-input-placeholder {
+  font-size: 16px;
+  line-height: 1, 25;
+  letter-spacing: 0.03em;
+  color: var(--link-footer-color);
+}
+.subscribe input {
+  font-size: 14px;
+  line-height: 1.71;
+  color: var(--dark-bg-text-color);
+}
+form button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  padding: 10px;
+
+  background-color: var(--accent-color);
+  color: var(--dark-bg-text-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  border: none;
+
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1, 88;
+  letter-spacing: 0.06em;
+
+  transition: color var(--animation), background-color var(--animation);
+  margin-left: 12px;
+  cursor: pointer;
+}
+form button:focus,
+button:hover {
+  background-color: var(--button-background-color);
+}
+.icon-send {
+  margin-left: 10px;
+  fill: var(--dark-bg-text-color);
+}
 /* секция портфолио */
 .portfolio.section .list {
   display: flex;
@@ -642,14 +681,20 @@ footer .social-icons .icon {
   min-height: 581px;
   background: var(--dark-bg-text-color);
   transition: transform var(--animation);
+  padding: 40px;
 }
-.modal .icon {
+.icon-modal {
   cursor: pointer;
   text-align: center;
   justify-content: center;
+  transition: color var(--animation);
+}
+.icon-modal:hover,
+.icon-modal:focus {
+  color: var(--accent-color);
 }
 
-.modal button {
+.modal .btn {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -660,6 +705,147 @@ footer .social-icons .icon {
   background-color: transparent;
   text-align: center;
   justify-content: center;
+}
+
+.modal-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 23px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: var(--title-color);
+  padding: 0;
+  margin: 0;
+  margin-bottom: 12px;
+}
+.form-field:not(:last-of-type) {
+  margin-bottom: 10px;
+}
+.form-field .form-label {
+  display: flex;
+  flex-direction: column;
+}
+.form-input {
+  margin-top: 4px;
+  padding-left: 42px;
+  height: 40px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+
+  transition: border var(--animation), outline var(--animation),
+    color var(--animation);
+}
+
+label {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+  color: var(--main-text-color);
+}
+.form-input.comment {
+  height: 120px;
+  resize: none;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+}
+.comment::placeholder {
+  font-family: var(--text-general);
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.01em;
+  color: rgba(117, 117, 117, 0.5);
+}
+.comment:not(:placeholder-shown) {
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.01em;
+}
+.agreement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+  color: #757575;
+}
+.agreement-link {
+  display: flex;
+  margin-left: 3px;
+}
+.agreement-link a {
+  color: var(--accent-color);
+}
+.modal-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 30px;
+  display: flex;
+  letter-spacing: 0.06em;
+  padding: 0;
+  height: 50px;
+  width: 200px;
+  transition: background-color var(--animation);
+}
+.form-icon {
+  position: absolute;
+  top: 29px;
+  left: 12px;
+  transition: fill var(--animation);
+}
+.form-label {
+  position: relative;
+  font-family: inherit;
+}
+
+.form-field:focus-within .form-input {
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  outline: var(--accent-color);
+}
+.form-field:focus-within .icon {
+  fill: var(--accent-color);
+}
+.checkbox {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+.checkbox:checked + .checkbox-icon {
+  background-color: var(--accent-color);
+  background-image: url(../images/check.svg);
+  background-size: contain;
+  background-origin: border-box;
+  border-color: var(--accent-color);
+}
+.checkbox-icon {
+  display: flex;
+  margin-right: 7px;
+  width: 16px;
+  height: 15px;
+  border: 2px solid var(--title-color);
+  border-radius: 2px;
+  transition: background-color var(--animation),
+    background-image var(--animation);
 }
 
 /* оверлей в портфолио */
